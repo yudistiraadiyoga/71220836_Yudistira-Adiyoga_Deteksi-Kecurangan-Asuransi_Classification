@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Fraud Prediction</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Insurance Fraud Prediction</h2>
+        <form id="prediction-form" method="post" action="/">
+            <!-- Form fields -->
+            <div class="form-group">
+                <label for="capital_gains">Capital Gains:</label>
+                <input type="number" class="form-control" id="capital_gains" name="capital_gains" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="capital_loss">Capital Loss:</label>
+                <input type="number" class="form-control" id="capital_loss" name="capital_loss" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="incident_hour_of_the_day">Incident Hour of the Day:</label>
+                <input type="number" class="form-control" id="incident_hour_of_the_day" name="incident_hour_of_the_day" required>
+            </div>
+            <div class="form-group">
+                <label for="number_of_vehicles_involved">Number of Vehicles Involved:</label>
+                <input type="number" class="form-control" id="number_of_vehicles_involved" name="number_of_vehicles_involved" required>
+            </div>
+            <div class="form-group">
+                <label for="witnesses">Witnesses:</label>
+                <input type="number" class="form-control" id="witnesses" name="witnesses" required>
+            </div>
+            <div class="form-group">
+                <label for="total_claim_amount">Total Claim Amount:</label>
+                <input type="number" class="form-control" id="total_claim_amount" name="total_claim_amount" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="insured_sex">Insured Sex:</label>
+                <select class="form-control" id="insured_sex" name="insured_sex">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="occupation">Occupation:</label>
+                <select class="form-control" id="occupation" name="occupation">
+                    <option value="adm-clerical">Adm-Clerical</option>
+                    <option value="armed-forces">Armed-Forces</option>
+                    <option value="craft-repair">Craft-Repair</option>
+                    <option value="exec-managerial">Exec-Managerial</option>
+                    <option value="farming-fishing">Farming-Fishing</option>
+                    <option value="handlers-cleaners">Handlers-Cleaners</option>
+                    <option value="machine-op-inspct">Machine-Op-Inspct</option>
+                    <option value="other-service">Other-Service</option>
+                    <option value="priv-house-serv">Priv-House-Serv</option>
+                    <option value="prof-specialty">Prof-Specialty</option>
+                    <option value="protective-serv">Protective-Serv</option>
+                    <option value="sales">Sales</option>
+                    <option value="tech-support">Tech-Support</option>
+                    <option value="transport-moving">Transport-Moving</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="hobbies">Hobbies:</label>
+                <select class="form-control" id="hobbies" name="hobbies">
+                    <option value="chess">Chess</option>
+                    <option value="cross-fit">Cross-Fit</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="incident_type">Incident Type:</label>
+                <select class="form-control" id="incident_type" name="incident_type">
+                    <option value="Multi-vehicle Collision">Multi-vehicle Collision</option>
+                    <option value="Parked Car">Parked Car</option>
+                    <option value="Single Vehicle Collision">Single Vehicle Collision</option>
+                    <option value="Vehicle Theft">Vehicle Theft</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="collision_type">Collision Type:</label>
+                <select class="form-control" id="collision_type" name="collision_type">
+                    <option value="Front Collision">Front Collision</option>
+                    <option value="Rear Collision">Rear Collision</option>
+                    <option value="Side Collision">Side Collision</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="incident_severity">Incident Severity:</label>
+                <select class="form-control" id="incident_severity" name="incident_severity">
+                    <option value="Major Damage">Major Damage</option>
+                    <option value="Minor Damage">Minor Damage</option>
+                    <option value="Total Loss">Total Loss</option>
+                    <option value="Trivial Damage">Trivial Damage</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="authorities_contacted">Authorities Contacted:</label>
+                <select class="form-control" id="authorities_contacted" name="authorities_contacted">
+                    <option value="Ambulance">Ambulance</option>
+                    <option value="Fire">Fire</option>
+                    <option value="None">None</option>
+                    <option value="Other">Other</option>
+                    <option value="Police">Police</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age_group">Age Group:</label>
+                <select class="form-control" id="age_group" name="age_group">
+                    <option value="15-20">15-20</option>
+                    <option value="21-25">21-25</option>
+                    <option value="26-30">26-30</option>
+                    <option value="31-35">31-35</option>
+                    <option value="36-40">36-40</option>
+                    <option value="41-45">41-45</option>
+                    <option value="46-50">46-50</option>
+                    <option value="51-55">51-55</option>
+                    <option value="56-60">56-60</option>
+                    <option value="61-65">61-65</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="months_as_customer_groups">Months as Customer Groups:</label>
+                <select class="form-control" id="months_as_customer_groups" name="months_as_customer_groups">
+                    <option value="0-50">0-50</option>
+                    <option value="51-100">51-100</option>
+                    <option value="101-150">101-150</option>
+                    <option value="151-200">151-200</option>
+                    <option value="201-250">201-250</option>
+                    <option value="251-300">251-300</option>
+                    <option value="301-350">301-350</option>
+                    <option value="351-400">351-400</option>
+                    <option value="401-450">401-450</option>
+                    <option value="451-500">451-500</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="policy_annual_premium_group">Policy Annual Premium Group:</label>
+                <select class="form-control" id="policy_annual_premium_group" name="policy_annual_premium_group">
+                    <option value="very low">Very Low</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="very high">Very High</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        <div id="prediction-result" class="mt-4">
+            {% if hasil is not none %}
+                <h2>Prediction Result:</h2>
+                {{ hasil|safe }}
+            {% endif %}
+        </div>
+        <div id="footerOuter">
+            <p><center>Yudistira Adiyoga | 71220836</center></p> 
+        </div>
+    </div>
+</body>
+</html>
